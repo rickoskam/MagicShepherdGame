@@ -50,7 +50,12 @@ public class GraanScript : MonoBehaviour {
                 float xrichting = graanx - sheepx;
                 float zrichting = graanz - sheepz;
 
-                schaapje.transform.Translate(new Vector3(xrichting * Time.deltaTime*speed, 0.0f, zrichting * Time.deltaTime*speed));
+                float afstand = (Mathf.Sqrt((xrichting * xrichting) + (zrichting * zrichting)));
+
+                if (afstand < 200)
+                {
+                    schaapje.transform.Translate(new Vector3(xrichting * Time.deltaTime * speed, 0.0f, zrichting * Time.deltaTime * speed));
+                }
             }
         }
 }

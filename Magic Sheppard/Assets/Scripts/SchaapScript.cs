@@ -127,9 +127,9 @@ public class SchaapScript : MonoBehaviour
             }
 
             // Wat schaapje moet doen als de herder dichtbij is (sociale en cognitieve component)
-            if (euclid <= 20)
+            if (euclid <= 40)
             {
-				speed = 0.5f;
+				speed = 0.99f;
                 herdernietdichtbij = false;
                 schaapje.transform.Translate(new Vector3(xkant * Time.deltaTime*speed, 0.0f, zkant * Time.deltaTime*speed));
 				Vector3 direction1 = new Vector3(xkant * speed * Time.deltaTime * 0.1f, 0.0f, zkant * speed * Time.deltaTime * 0.1f);

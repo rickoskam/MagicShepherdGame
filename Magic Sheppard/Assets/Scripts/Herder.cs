@@ -48,7 +48,8 @@ public class Herder : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		iii = 1;
+        Time.timeScale = 1.5f;
+        iii = 1;
 		aantalschapendood = 0;
 		aantalschapengenezen = 0;
         score = 1000;
@@ -442,7 +443,7 @@ public class Herder : MonoBehaviour {
         FFButton2.gameObject.SetActive(true);
         Menu.gameObject.SetActive(false);
         MenuCanvas.gameObject.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 1.5f;
     }
 
     public void FF()
@@ -451,7 +452,7 @@ public class Herder : MonoBehaviour {
         Resumebutton.gameObject.SetActive(true);
         FFButton1.gameObject.SetActive(false);
         FFButton2.gameObject.SetActive(false);
-        Time.timeScale = 1.5f;
+        Time.timeScale = 2f;
     }
 
     public void ChangeVolumeAction()

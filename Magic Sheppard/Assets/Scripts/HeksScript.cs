@@ -101,7 +101,7 @@ public class HeksScript : MonoBehaviour {
             float xrichting = xdesired - xeigen;
             float zrichting = zdesired - zeigen;
 
-            transform.Translate(new Vector3(xrichting * Time.deltaTime, 0, zrichting * Time.deltaTime));
+            transform.Translate(new Vector3(xrichting * Time.deltaTime * 0.1f, 0, zrichting * Time.deltaTime * 0.1f));
 
             if (Mathf.Abs(xdesired - xeigen) < 0.1 && Mathf.Abs(zdesired - zeigen) < 0.1)
             {
@@ -120,7 +120,7 @@ public class HeksScript : MonoBehaviour {
         float xrichting = xdesiredr - xeigen;
         float zrichting = zdesiredr - zeigen;
 
-        transform.Translate(new Vector3(xrichting * Time.deltaTime, 0, zrichting * Time.deltaTime));
+        transform.Translate(new Vector3(xrichting * Time.deltaTime * 0.1f, 0, zrichting * Time.deltaTime * 0.1f));
 
         if (Mathf.Abs(xdesiredr - xeigen) < 0.1 && Mathf.Abs(zdesiredr - zeigen) < 0.1)
         {
@@ -135,7 +135,7 @@ public class HeksScript : MonoBehaviour {
         GameObject[] gos = GameObject.FindGameObjectsWithTag("Schaap");
         GameObject o1 = gos[chosenone];
 
-        int r2 = r1.Next(10);
+        int r2 = r1.Next(5);
 
         if (r2 == 0)
         {
