@@ -485,7 +485,13 @@ public class Herder : MonoBehaviour {
 
     public void SeriouslyQuit()
     {
-        Application.LoadLevel("Main_Menu");
+        //Application.LoadLevel("Main_Menu");
+        Application.Quit();
+    }
+
+    public void NaarWinkel()
+    {
+        Application.LoadLevel("Winkel2");
     }
 
     void SetScore()

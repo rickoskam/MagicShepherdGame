@@ -11,13 +11,8 @@ public class GraanScript : MonoBehaviour {
     private bool aantrekking = false;
 
     public static int Graangebruiktindezegame;
-
-    private int gr;
-
-    // Use this for initialization
+    
     void Start () {
-        //gr = gr + Graangebruiktindezegame;
-        //aantalgraangekocht = aantalgraangekocht - gr;
         SetAantalGraanText();
         Graangebruiktindezegame = 0;
 	}

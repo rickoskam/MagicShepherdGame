@@ -146,14 +146,14 @@ public class SchaapScript : MonoBehaviour
         int le = gevangen.Length;
         for (int k = 0; k < le; k++)
         {
-            GameObject gevschaap = gevangen[k];
-            float sheepx = gevschaap.transform.position.x;
-            float sheepz = gevschaap.transform.position.z;
-			float randx = Schuur.transform.position.x;
-			float randz = Schuur.transform.position.z+5;
-            float xrichting = randx - sheepx;
-            float zrichting = randz - sheepz;
-            gevschaap.transform.Translate(new Vector3(xrichting * speed * Time.deltaTime * 0.1f, 0.0f, zrichting * speed * Time.deltaTime * 0.1f));
+   //         GameObject gevschaap = gevangen[k];
+   //         float sheepx = gevschaap.transform.position.x;
+   //         float sheepz = gevschaap.transform.position.z;
+			//float randx = Schuur.transform.position.x;
+			//float randz = Schuur.transform.position.z+5;
+   //         float xrichting = randx - sheepx;
+   //         float zrichting = randz - sheepz;
+   //         gevschaap.transform.Translate(new Vector3(xrichting * speed * Time.deltaTime * 0.1f, 0.0f, zrichting * speed * Time.deltaTime * 0.1f));
         }
 
     }
