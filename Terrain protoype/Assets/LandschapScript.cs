@@ -81,7 +81,7 @@ public class LandschapScript : MonoBehaviour {
 					int z = zbegin + (int)(r*Mathf.Sin(d*Mathf.PI/180));
 					
 					if(positioncheck(x, z, positionsx, positionsz)){
-						heights[x,z] = 0;
+						heights[x,z] = -0.05f;
 					}
 				}
 			}
@@ -184,7 +184,9 @@ public class LandschapScript : MonoBehaviour {
 			RaycastHit test;
 			Ray ray = new Ray(steen.transform.position, Vector3.down);
 			if (Physics.Raycast(ray, out test)) {
-				steen.transform.Translate(new Vector3(0,-test.distance,0));
+				if(test.transform.tag=="Terrein"){
+					steen.transform.Translate(new Vector3(0,-test.distance,0));
+				}
 			}
 		}
 		// voorwerpen spawnen
@@ -194,20 +196,21 @@ public class LandschapScript : MonoBehaviour {
 		GameObject cake = Resources.Load ("Cake") as GameObject;
 		GameObject beer = Resources.Load ("Teddybear") as GameObject;
 		GameObject kado = Resources.Load ("Present") as GameObject;
-		GameObject cane = Resources.Load ("Candy-cane") as GameObject;
-		GameObject [] voorwerpen = {ijsje,wafel,donut,cake,beer,kado,cane};
+		GameObject cane = Resources.Load ("Candy-Cane") as GameObject;
+		GameObject drop1 = Resources.Load ("Drop1") as GameObject;
+		GameObject drop2 = Resources.Load ("Drop2") as GameObject;
+		GameObject [] voorwerpen = {ijsje,wafel,donut,cake,beer,kado,cane,drop1,drop2};
 		for(int i = 0; i<aantalVoorwerpen; i++){
 			float posx = Random.Range(beginx,eindx);
 			float posz = Random.Range(beginz,eindz);
-			int random = Random.Range(0,6);
-			print (random);
-			print(voorwerpen[random].name);
+			int random = Random.Range(0,voorwerpen.Length-1);
 			GameObject voorwerp = Instantiate(voorwerpen[random]);
-			voorwerp.transform.position = new Vector3(posx,100,posz);
+			voorwerp.transform.position = new Vector3(posx,1000,posz);
 			RaycastHit test;
 			Ray testray = new Ray (voorwerp.transform.position, Vector3.down);
 			if (Physics.Raycast (testray, out test)) {
-					voorwerp.transform.Translate (new Vector3 (0, -test.distance, 0));
+				voorwerp.transform.Translate (new Vector3 (0, -test.distance, 0));
+				print (test.transform.tag);
 			}
 		}
 		terraindata.SetHeights (0, 0, heights);

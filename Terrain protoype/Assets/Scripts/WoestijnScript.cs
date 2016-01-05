@@ -10,6 +10,7 @@ public class WoestijnScript : MonoBehaviour {
 	public int aaantalSloten;
 	public int aantalMeren;
 	public int aantalBomen;
+	public int aantalPiramides;
 	void generateTerrain(){
 		TerrainData terraindata = terrain.terrainData;
 		int heightmapx = terraindata.heightmapWidth;
@@ -41,7 +42,8 @@ public class WoestijnScript : MonoBehaviour {
 		int hmleveleindx = (int)(0.5 * heightmapx + 0.5 * hmlevellengthx);
 		int hmlevelbeginz = (int)(0.5 * heightmapx - 0.5 * hmlevellengthz);
 		int hmleveleindz = (int)(0.5 * heightmapx + 0.5 * hmlevellengthz);
-		
+
+		//beginhoogte instellen
 		for (int x = 0; x < heightmapx; x++) {
 			for (int z = 0; z < heightmapz; z++) {
 				heights [x, z] = beginhoogte;
@@ -92,13 +94,21 @@ public class WoestijnScript : MonoBehaviour {
 				}
 			}
 		}
-
+		// kleine hobbeltjes 
 		for (int x = 0; x < heightmapx; x++) {
 			for (int z = 0; z < heightmapz; z++) {
 				if (heights [x, z] >= beginhoogte) {
 					heights [x, z] += Mathf.Abs (Mathf.Sin ((Random.value * x + Random.value * z) * 10) / 50);
 				}
 			}
+		}
+		// piramides plaatsen
+		GameObject piramide = Resources.Load ("Pyramid") as GameObject;
+		for (int i = 0; i < aantalPiramides; i++) {
+			GameObject p =  Instantiate(piramide);
+			float x = Random.Range(0,levelsizex);
+			float z = Random.Range(0,beginz/2);
+			p.transform.position = new Vector3(x,0,z);
 		}
 		//Hekjes spawnen
 		int aantalhekjesx = (int)(levelsizex / lengteHek);
@@ -107,13 +117,6 @@ public class WoestijnScript : MonoBehaviour {
 		for (int i = 1; i < aantalhekjesx+2; i++) {
 			GameObject hek = Instantiate (hekPrefab);
 			hek.transform.position = new Vector3 (beginx + i * lengteHek, grondhoogte, beginz);
-		}
-		for (int i = 1; i < aantalhekjesx+2; i++) {
-			GameObject hek2 = Instantiate (hekPrefab);
-			hek2.transform.position = new Vector3 (beginx + i * lengteHek, grondhoogte, eindz);
-			if (i == (int)(aantalhekjesx / 2)) {
-				hek2.tag = "Hek";
-			}
 		}
 		for (int i = 1; i < aantalhekjesx+2; i++) {
 			GameObject hek2 = Instantiate (hekPrefab);
@@ -159,7 +162,7 @@ public class WoestijnScript : MonoBehaviour {
 			double z = Random.Range (hmlevelbeginz + 2, hmleveleindz - 2);
 			float xx = (float)(z * terrainsizez / heightmapz);
 			float zz = (float)(x * terrainsizex / heightmapx);
-			if (watercheck (waterx, waterz, waterr, x, z) == 1) {
+			if (watercheck (waterx, waterz, waterr, x, z) == 1) { //als de plek bij het water is kies 1 van de palmbomen uit
 				float random = Random.value;
 				if (random < (0.16f)) {
 					GameObject palm = Instantiate (Palmboom1);
@@ -259,7 +262,7 @@ public class WoestijnScript : MonoBehaviour {
 					}
 				}
 			}
-			if (watercheck (waterx, waterz, waterr, x, z) == 2 && Random.value < 0.001f) {
+			if (watercheck (waterx, waterz, waterr, x, z) == 2 && Random.value < 0.001f) { // als de plek ver van het water is, kleine kans op een dode boom of cactus
 				if (Random.value > 0.5) {
 					GameObject boom = Instantiate (Dodeboom);
 					boom.transform.position = new Vector3 (xx, 1000, zz);
