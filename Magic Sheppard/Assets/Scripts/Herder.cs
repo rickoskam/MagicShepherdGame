@@ -498,4 +498,9 @@ public class Herder : MonoBehaviour {
     {
         Score.text = "" + score;
     }
+
+    public void SetGameVolume(float vol)
+    {
+        AudioListener.volume = vol;
+    }
 }

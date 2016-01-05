@@ -54,8 +54,8 @@ public class HeksScript : MonoBehaviour {
             }
             else
             {
-                xdesiredr = Random.Range(-40, 40); //de range is de grootte van het weiland
-                zdesiredr = Random.Range(-40, 40); //de range is de grootte van het weiland 
+                xdesiredr = Random.Range(500, 1000); //de range is de grootte van het weiland
+                zdesiredr = Random.Range(500, 1000); //de range is de grootte van het weiland 
 
                 keuze = 3;
             }
@@ -63,8 +63,8 @@ public class HeksScript : MonoBehaviour {
         }
         if (lengte == 0)
         {
-            xdesiredr = Random.Range(-40, 40);//de range is de grootte van het weiland
-            zdesiredr = Random.Range(-40, 40);//de range is de grootte van het weiland
+            xdesiredr = Random.Range(500, 1000); //de range is de grootte van het weiland
+            zdesiredr = Random.Range(500, 1000); //de range is de grootte van het weiland
 
             keuze = 3;
         }
