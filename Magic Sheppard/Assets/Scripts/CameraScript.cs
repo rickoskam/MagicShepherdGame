@@ -15,8 +15,18 @@ public class CameraScript : MonoBehaviour {
 			transform.Rotate (new Vector3 (0, speed * Time.deltaTime * Input.GetAxis ("Mouse X")));
 	}
 
-    public void OnMouseOver()
+    public void NaarLevel1()
     {
          Application.LoadLevel("Level1");
+    }
+
+    public void NaarLevel2()
+    {
+        Application.LoadLevel("Level2woestijn");
+    }
+
+    public void NaarLevel3()
+    {
+        Application.LoadLevel("Level3");
     }
 }
