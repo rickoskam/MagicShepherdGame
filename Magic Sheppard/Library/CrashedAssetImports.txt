@@ -1,1 +1,1 @@
-Assets/Terrain Assets/Trees Ambient-Occlusion/Mimosa.fbx
+Assets/Resources/Dog.blend
